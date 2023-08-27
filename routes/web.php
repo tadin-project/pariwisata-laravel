@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
 Route::prefix('admin')->name('admin.')->group(function () {
     // master user
     Route::prefix('users')->name('users.')->group(function () {
+        Route::get("/get-data", [User::class, 'getData'])->name('get-data');
         Route::get("/", [User::class, 'index'])->name('index');
     });
 });

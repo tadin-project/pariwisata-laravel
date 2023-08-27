@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Core;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
-class AdminCoreC extends Controller
+class AdminCoreC extends PublicCoreC
 {
     private $__view;
     private $__title = "";

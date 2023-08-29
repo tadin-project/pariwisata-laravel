@@ -26,23 +26,23 @@ class UsersSeeder extends Seeder
                 "id" => 1,
                 "name" => "Root",
                 "email" => "root@gmail.com",
+                "username" => "root",
                 "password" => Hash::make('root@123'),
                 "user_status" => true,
-                "group_id" => 1,
             ], [
                 "id" => 2,
                 "name" => "Administrator",
                 "email" => "admin@gmail.com",
+                "username" => "admin",
                 "password" => Hash::make('admin@123'),
                 "user_status" => true,
-                "group_id" => 2,
             ], [
                 "id" => 3,
                 "name" => "User 01",
                 "email" => "user01@gmail.com",
+                "username" => "user01",
                 "password" => Hash::make('user01@123'),
                 "user_status" => true,
-                "group_id" => 3,
             ],
         ];
 

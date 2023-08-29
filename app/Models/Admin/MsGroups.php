@@ -24,4 +24,9 @@ class MsGroups extends Model
     {
         return $this->hasMany(GroupMenus::class, 'group_id', 'group_id');
     }
+
+    public function group_users(): HasMany
+    {
+        return $this->hasMany(GroupUsers::class, 'group_id', 'group_id');
+    }
 }

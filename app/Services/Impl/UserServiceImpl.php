@@ -2,6 +2,7 @@
 
 namespace App\Services\Impl;
 
+use App\Models\Admin\MsGroups;
 use App\Services\Traits\CustomJsonResponse;
 use App\Services\UserService;
 use Illuminate\Support\Facades\DB;
@@ -25,6 +26,17 @@ class UserServiceImpl implements UserService
             } else {
                 $data = $rawData;
             }
+
+            return $this->successJsonResponse($data);
+        } catch (\Throwable $th) {
+            return $this->errorJsonResponse(env("APP_ENV", 'production') == 'production' ? 'Gagal ambil data. Silahkan hubungi Admin' : $th->getMessage(), $th->getTrace());
+        }
+    }
+
+    public function getGroup(): array
+    {
+        try {
+            $data = MsGroups::where('group_status', true)->orderBy('group_nama', 'asc')->get();
 
             return $this->successJsonResponse($data);
         } catch (\Throwable $th) {

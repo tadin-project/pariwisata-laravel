@@ -24,10 +24,18 @@ class User extends Controller
 
     public function index(): View
     {
+        $listGroup = [];
+        $rawGroup = $this->userService->getGroup();
+        if ($rawGroup["status"]) {
+            $listGroup = $rawGroup["data"];
+        }
+
         $data = [
             'isi' => 'ok',
             'title' => $this->title,
+            'list_group' => $listGroup,
         ];
+
         $this->AdminCore->view('admin.users', $data);
         return $this->AdminCore->show();
     }

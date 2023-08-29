@@ -12,11 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->char('username', 255)->unique();
             $table->boolean('user_status')->nullable()->default(true);
-            $table->smallInteger('group_id', false, true)->nullable();
             $table->softDeletes();
-
-            $table->foreign('group_id', 'users_group_id_FK')->references('group_id')->on('ms_groups')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -26,9 +24,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign('users_group_id_FK');
-
-            $table->dropColumn(['group_id', 'user_status']);
+            $table->dropColumn(['username', 'user_status']);
             $table->dropSoftDeletes();
         });
     }

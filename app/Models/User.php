@@ -4,9 +4,10 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Models\Admin\GroupUsers;
 use App\Models\Admin\MsGroups;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -23,6 +24,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
         'group_id',
@@ -49,8 +51,8 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function group(): BelongsTo
+    public function group(): HasMany
     {
-        return $this->belongsTo(MsGroups::class, 'group_id', 'group_id');
+        return $this->hasMany(GroupUsers::class, 'user_id', 'id');
     }
 }

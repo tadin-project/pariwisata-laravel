@@ -2,15 +2,16 @@
 
 namespace App\Models\Admin;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class GroupMenus extends Model
+class GroupUsers extends Model
 {
     use HasFactory;
-    protected $table = "group_menus";
-    protected $primaryKey = "gm_id";
+    protected $table = "group_users";
+    protected $primaryKey = "gu_id";
     protected $guarded = [];
     public $timestamps = false;
 
@@ -19,8 +20,8 @@ class GroupMenus extends Model
         return $this->belongsToMany(MsGroups::class, 'ms_groups', 'group_id', 'group_id');
     }
 
-    public function menus(): BelongsToMany
+    public function users(): BelongsToMany
     {
-        return $this->belongsToMany(MsMenus::class, 'ms_menus', 'menu_id', 'menu_id');
+        return $this->belongsToMany(User::class, 'users', 'user_id', 'id');
     }
 }

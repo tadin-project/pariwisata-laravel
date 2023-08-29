@@ -41,9 +41,22 @@
         <form id="formVendor" class="form" autocomplete="off">
           <!--begin::Input group-->
           <div class="fv-row mb-10">
-            <label class="required fw-semibold fs-6 mb-2">Name</label>
+            <label class="required fw-semibold fs-6 mb-2">Nama</label>
             <input type="text" name="name" id="name" class="form-control form-control-solid mb-3 mb-lg-0"
               placeholder="" value="" />
+          </div>
+          <div class="fv-row mb-10">
+            <label class="required fw-semibold fs-6 mb-2">Username</label>
+            <input type="text" name="name" id="name" class="form-control form-control-solid mb-3 mb-lg-0"
+              placeholder="" value="" />
+          </div>
+          <div class="fv-row mb-10">
+            <label class="required fw-semibold fs-6 mb-2">Hak Akses</label>
+            <select name="id_group" id="id_group" class="form-control form-control-solid mb-3 mb-lg-0">
+              @foreach ($list_group as $v)
+                <option value="{{ $v->group_id }}">{{ $v->group_nama }}</option>
+              @endforeach
+            </select>
           </div>
           <!--end::Input group-->
         </form>
